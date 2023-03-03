@@ -70,6 +70,12 @@ namespace API.Processors
             try
             {
                RocketModel rocket =  await _rocketService.Get(id);
+
+                //Aici vei implementa partea de parsare smartass 
+                //daca ai intrebari sau nu te descurci
+                //cauti pe google
+                //pana rezolvi, ca eu nu te pot ajuta ca sunt proasta ¯\_(๑❛ᴗ❛๑)_/¯
+
                 return rocket;
             }
             catch (Exception ex)
@@ -89,6 +95,9 @@ namespace API.Processors
             try
             {
                 List<RocketModel> rockets = await _rocketService.GetAll();
+
+                //si aici
+
                 return rockets;
             }
             catch (Exception ex)

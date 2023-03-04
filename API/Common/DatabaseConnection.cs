@@ -7,6 +7,7 @@ namespace API.Common
     {
         public static IMongoDatabase GetDatabaseConnection(DatabaseSettings databaseSettings)
         {
+            /*
             if (databaseSettings == null)
             {
                 throw new ArgumentNullException(nameof(databaseSettings));
@@ -35,6 +36,12 @@ namespace API.Common
             {
                 throw ex;
             }
+            */
+            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RocketDataUser:RocketDataPassword@rocketdata.aou1nyo.mongodb.net/?retryWrites=true&w=majority");
+            //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            var client = new MongoClient(settings);
+            var database = client.GetDatabase("RocketDataDB");
+            return database;
         }
     }
 }

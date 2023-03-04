@@ -7,7 +7,7 @@ namespace API.Controllers
 {
 
     [ApiController]
-    [Route("/")] //TO DO: INSERT ROUTE ONCE DB IS READY 
+    [Route("api/v1[controller]")] //TO DO: INSERT ROUTE ONCE DB IS READY 
     public class RocketController: ControllerBase
     {
         private readonly IRocketProcessor _rocketProcessor;
@@ -15,6 +15,26 @@ namespace API.Controllers
         public RocketController(IRocketProcessor rocketProcessor)
         {
             _rocketProcessor = rocketProcessor ?? throw new ArgumentNullException();
+        }
+
+        /// <summary>
+        /// Add a rocket
+        /// </summary>
+        /// <param name="rocketModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] RocketModel rocketModel)
+        {
+            try
+            {
+                rocketModel.Id = String.Empty;
+                await _rocketProcessor.Create(rocketModel);
+                return Ok();
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         /// <summary>

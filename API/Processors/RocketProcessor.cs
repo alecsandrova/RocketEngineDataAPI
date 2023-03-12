@@ -65,18 +65,15 @@ namespace API.Processors
         /// <param name="id"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async Task<RocketModel> Get(string id)
+        public async Task<String> Get(string id)
         {
             try
             {
-               RocketModel rocket =  await _rocketService.Get(id);
+                RocketModel rocket = await _rocketService.Get(id);
 
-                //Aici vei implementa partea de parsare smartass 
-                //daca ai intrebari sau nu te descurci
-                //cauti pe google
-                //pana rezolvi, ca eu nu te pot ajuta ca sunt proasta ¯\_(๑❛ᴗ❛๑)_/¯
+                var parser = new JsonLDConvertor(); // instantiaza parser-ul
 
-                return rocket;
+                return parser.MakeStringOutput(rocket);
             }
             catch (Exception ex)
             {
@@ -90,15 +87,15 @@ namespace API.Processors
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async Task<List<RocketModel>> GetAll()
+        public async Task<String> GetAll()
         {
             try
             {
                 List<RocketModel> rockets = await _rocketService.GetAll();
 
-                //si aici
+                var parser = new JsonLDConvertor(); // instantiaza parser-ul
 
-                return rockets;
+                return parser.MakeStringOutput(rockets);
             }
             catch (Exception ex)
             {

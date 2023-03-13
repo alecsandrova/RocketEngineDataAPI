@@ -17,7 +17,6 @@ namespace API.Models
             var obiect = new JObject
             {
                 { "@context", context },
-                { "@type",  "RocketScienceData"},
                 { "@list",  listaProprietati}
             };
 
@@ -43,7 +42,6 @@ namespace API.Models
             var obiect = new JObject
             {
                 { "@context", context },
-                { "@type",  "RocketScienceData"},
                 { "@list",  listaProprietati}
             };
 

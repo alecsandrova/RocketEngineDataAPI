@@ -89,3 +89,4 @@ C:\Users\Andre\Desktop\GitHub\RocketEngineDataAPI\API\obj\Debug\net6.0\API.pdb
 C:\Users\Andre\Desktop\GitHub\RocketEngineDataAPI\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\Andre\Desktop\GitHub\RocketEngineDataAPI\API\obj\Debug\net6.0\ref\API.dll
 C:\Users\Andre\Desktop\GitHub\RocketEngineDataAPI\API\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\02_PROJECTS\API\API\API\bin\Debug\net6.0\Newtonsoft.Json.dll

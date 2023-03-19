@@ -33,7 +33,7 @@ namespace API.Processors
             {
                 await _rocketService.Create(rocketModel);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -92,6 +92,24 @@ namespace API.Processors
             try
             {
                 List<RocketModel> rockets = await _rocketService.GetAll();
+
+                var parser = new JsonLDConvertor(); // instantiaza parser-ul
+
+                return parser.MakeStringOutput(rockets);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<String> GetAllSnippets()
+        {
+            try
+            {
+                List<RocketModel> allRockets = await _rocketService.GetAll();
+
+                List<RocketModel> rockets = allRockets.Take(30).ToList();
 
                 var parser = new JsonLDConvertor(); // instantiaza parser-ul
 

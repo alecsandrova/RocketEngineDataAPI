@@ -7,7 +7,8 @@ namespace API.Processors
         Task Create(RocketModel rocketModel);
         Task<String> Get(string id);
         Task<String> GetAll();
-      
+
+        Task<String> GetAllSnippets();
         Task Update(string id, RocketModel rocketModel);
         Task Delete(string id);
     }

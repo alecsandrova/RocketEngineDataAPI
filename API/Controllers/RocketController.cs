@@ -7,8 +7,8 @@ namespace API.Controllers
 {
 
     [ApiController]
-    [Route("api/v1[controller]")] //TO DO: INSERT ROUTE ONCE DB IS READY 
-    public class RocketController: ControllerBase
+    [Route("/get_data")]
+    public class RocketController : ControllerBase
     {
         private readonly IRocketProcessor _rocketProcessor;
 
@@ -23,7 +23,7 @@ namespace API.Controllers
         /// <param name="rocketModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] RocketModel rocketModel)
+        public async Task<IActionResult> Create([FromQuery] RocketModel rocketModel)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace API.Controllers
                 await _rocketProcessor.Create(rocketModel);
                 return Ok();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -42,14 +42,28 @@ namespace API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+
+        public async Task<IActionResult> GetAll([FromQuery] string dataType, [FromQuery] bool snippet)
         {
             try
             {
-                String rockets = await _rocketProcessor.GetAll();
-                return Ok(rockets);
+                if (dataType == "rockets")
+                {
+
+                    if (snippet)
+                    {
+                        String rockets = await _rocketProcessor.GetAllSnippets();
+                        return Ok(rockets);
+                    }
+                    else
+                    {
+                        String rockets = await _rocketProcessor.GetAll();
+                        return Ok(rockets);
+                    }
+                }
+                else return Ok("Data Type Does Not Exist");
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -85,7 +99,7 @@ namespace API.Controllers
         {
             try
             {
-                 await _rocketProcessor.Update(id,rocket);
+                await _rocketProcessor.Update(id, rocket);
                 return Ok();
             }
             catch (Exception ex)

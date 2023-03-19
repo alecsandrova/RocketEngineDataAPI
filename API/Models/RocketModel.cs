@@ -12,7 +12,7 @@ namespace API.Models
         public string Id { get; set; }      
         public string UnitNumber { get; set; }
         public string Time { get; set; }
-        public List<string> OperationalSettigs { get; set; }
+        public List<string> OperationalSettings { get; set; }
         public List<string> SensorMeasurements { get; set; }
 
     }

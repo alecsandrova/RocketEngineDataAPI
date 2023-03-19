@@ -5,9 +5,10 @@ namespace API.Processors
     public interface IRocketProcessor
     {
         Task Create(RocketModel rocketModel);
-        Task<RocketModel> Get(string id);
-        Task<List<RocketModel>> GetAll();
-      
+        Task<String> Get(string id);
+        Task<String> GetAll();
+
+        Task<String> GetAllSnippets();
         Task Update(string id, RocketModel rocketModel);
         Task Delete(string id);
     }

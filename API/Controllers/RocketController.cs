@@ -43,11 +43,11 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public async Task<IActionResult> GetAll([FromQuery] string dataType, [FromQuery] bool snippet)
+        public async Task<IActionResult> GetAll([FromQuery] string data_type, [FromQuery] bool snippet)
         {
             try
             {
-                if (dataType == "rockets")
+                if (data_type == "rockets")
                 {
 
                     if (snippet)

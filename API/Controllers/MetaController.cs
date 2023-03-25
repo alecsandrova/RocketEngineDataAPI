@@ -15,14 +15,6 @@ namespace API.Controllers
         {
             try
             {
-                /* RocketModel model = new RocketModel();
-                 var context = new JObject { { "@schema", "MongoDB" } };
-                 var listaProprietati = JObject.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(model, Newtonsoft.Json.Formatting.Indented));
-                 var data = new JObject
-                     {
-                         { "@context", context },
-                         { "@list",  listaProprietati}
-                     };*/
                 string data = @"{
     ""@context"": {
         ""schema"": ""MongoDB""
